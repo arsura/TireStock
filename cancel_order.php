@@ -128,7 +128,7 @@
 		function cancelOrder(id){
 			swal({
 				title: 'Are you sure?',
-				text: "คุณต้องการยกเลิกรายการ "+id+" ใช้ไม่!",
+				text: "คุณต้องการยกเลิกรายการ "+id+" ใช่หรือไม่ ?",
 				type: 'warning',
 				showCancelButton: true,
 				confirmButtonColor: '#3085d6',
@@ -145,7 +145,7 @@
 					success:function(msg){
 						swal({
 							title: "แจ้งเตือน",
-							text: "ระบบดำเนินการขายเรียบร้อยแล้ว",
+							text: "ระบบดำเนินการยกเลิกเรียบร้อยแล้ว",
 						},function(isOk){
 							if(isOk){
 								window.location.reload();

@@ -216,7 +216,7 @@ $(document).ready(function(){
 
 	$(document).on('click', '.delete', function(){
 		var item_id = $(this).attr("id");
-		if(confirm("คุณต้องที่การจะลบ "+item_id+" ใช่หรือไม่ ?"))
+		/*if(confirm("คุณต้องที่การจะลบ "+item_id+" ใช่หรือไม่ ?"))
 		{
 			$.ajax({
 				url:"delete.php",
@@ -232,7 +232,37 @@ $(document).ready(function(){
 		else
 		{
 			return false;	
-		}
+		}*/
+		
+			swal({
+				title: 'แจ้งเตือน !!',
+				text: "คุณต้องการยกเลิกรายการ "+item_id+" ใช่หรือไม่ ?",
+				type: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonText:'ยกเลิก',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'ใช่',
+				closeOnConfirm: false
+			},
+			
+			function(){
+				$.ajax({
+					url:"delete.php",
+					method:'POST',
+					data:{item_id:item_id},
+					success:function(msg){
+						swal({
+							title: "แจ้งเตือน",
+							text: "ระบบดำเนินการลบเรียบร้อยแล้ว",
+						},function(isOk){
+							if(isOk){
+								window.location.reload();
+							}
+						});
+					}
+				});	
+			})
 	});
 
 
